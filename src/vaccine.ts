@@ -1,26 +1,26 @@
 /**
- * [ends before index, feature name]
+ * [start index, ends before index, feature name, codons]
  */
 export const features = [
   // A modified 5’-cap1 structure (m7G+m3'-5'-ppp-5'-Am)
-  [2, "cap"],
+  [0, 2, "cap"],
   // 5´-untranslated region derived from human alpha-globin RNA with an optimized Kozak sequence
-  [54, "5’-UTR"],
+  [2, 54, "5’-UTR"],
   // S glycoprotein signal peptide (extended leader sequence), which guides translocation of the nascent polypeptide chain into the endoplasmic reticulum.
-  [102, "sig"],
+  [54, 102, "sig", true],
   // Codon-optimized sequence encoding full-length SARS-CoV-2 spike (S) glycoprotein containing mutations K986P and V987P to ensure the S glycoprotein remains in an antigenically optimal pre-fusion conformation
-  [3873, "SARS-CoV-2 spike: protein_mut"],
-  [3879, "SARS-CoV-2 spike: stop codons"],
+  [102, 3873, "SARS-CoV-2 spike: protein_mut", true],
+  [3873, 3879, "SARS-CoV-2 spike: stop codons", true],
   // The 3´ untranslated region comprises two sequence elements derived from the amino-terminal enhancer of split (AES) mRNA and the mitochondrial encoded 12S ribosomal RNA to confer RNA stability and high total protein expression.
-  [4174, "3’-UTR"],
+  [3879, 4174, "3’-UTR"],
   // A 110-nucleotide poly(A)-tail consisting of:
   // a stretch of 30 adenosine residues:
-  [4174 + 30, "poly(A): first 30"],
+  [4174, 4174 + 30, "poly(A): first 30"],
   // followed by a 10-nucleotide linker sequence
-  [4174 + 30 + 10, "poly(A): linker sequence"],
+  [4174 + 30, 4174 + 30 + 10, "poly(A): linker sequence"],
   // 70 adenosine residues:
-  [4174 + 30 + 10 + 70, "poly(A): last 70"]
-];
+  [4174 + 30 + 10, 4174 + 30 + 10 + 70, "poly(A): last 70"]
+] as const;
 
 /**
  * BioNTech/Pfizer SARS-CoV-2 Vaccine

@@ -1,4 +1,3 @@
-import MidiWriter from "midi-writer-js";
 import { nucleotides, features, vaccine } from "./vaccine";
 
 const mapping = {
@@ -11,23 +10,26 @@ const mapping = {
 
 type Nucleotides = keyof typeof mapping;
 
-const mapped2 = nucleotides.map((nucleotide, index) => {
-  const featureIndex = features.findIndex(
-    ([beforeIndex]) => index < beforeIndex
-  );
-  const [nextFeatureStartIndex, feature] = features[featureIndex] ?? [
+export const mapped = nucleotides.map((nucleotide, index) => {
+  const [
+    featureStartIndex,
+    nextFeatureStartIndex,
+    feature,
+    codons
+  ] = features.find(([, beforeIndex]) => index < beforeIndex) ?? [
+    vaccine.length,
     vaccine.length,
     "end"
   ];
-  const [featureStartIndex] =
-    featureIndex === 0 ? [0] : features[featureIndex - 1];
+  const indexWithinFeature = index - featureStartIndex;
   const pitch = mapping[nucleotide as Nucleotides];
   const channel = nucleotide === "Ψ" ? 2 : 1;
+  const beat = indexWithinFeature % (codons ? 3 : 4);
   return {
     pitch,
     channel,
-    duration: "8t",
-    velocity: index % 3 ? 70 : 50,
+    duration: codons ? "8t" : "8",
+    velocity: beat ? 70 : 50,
     marker: featureStartIndex === index ? feature : undefined
   };
 });

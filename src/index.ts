@@ -5,17 +5,18 @@ const track = new MidiWriter.Track();
 // Define an instrument (optional):
 track.addEvent(new MidiWriter.ProgramChangeEvent({ instrument: 1 }));
 
-mapped.forEach(({ marker, map, pitch, ...event }) => {
-  track.addMarker(marker);
-  const noteEvents = pitch.map(
-    (pitch, index) =>
-      new MidiWriter.NoteEvent({
-        ...event,
-        pitch,
-        ...(index !== 0 ? { wait: [] } : {})
-      })
-  );
-  track.addEvent(noteEvents, map);
+mapped.forEach(({ marker, ...event }) => {
+  if (marker) track.addMarker(marker);
+  track.addEvent(new MidiWriter.NoteEvent(event));
+  // const noteEvents = pitch.map(
+  //   (pitch, index) =>
+  //     new MidiWriter.NoteEvent({
+  //       ...event,
+  //       pitch,
+  //       ...(index !== 0 ? { wait: [] } : {})
+  //     })
+  // );
+  // track.addEvent(noteEvents, map);
 });
 
 const writer = new MidiWriter.Writer(track);

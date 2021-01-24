@@ -8,21 +8,12 @@ track.addEvent(new MidiWriter.ProgramChangeEvent({ instrument: 1 }));
 mapped.forEach(({ marker, ...event }) => {
   if (marker) track.addMarker(marker);
   track.addEvent(new MidiWriter.NoteEvent(event));
-  // const noteEvents = pitch.map(
-  //   (pitch, index) =>
-  //     new MidiWriter.NoteEvent({
-  //       ...event,
-  //       pitch,
-  //       ...(index !== 0 ? { wait: [] } : {})
-  //     })
-  // );
-  // track.addEvent(noteEvents, map);
 });
 
 const writer = new MidiWriter.Writer(track);
 const uri = writer.dataUri();
 
-document.getElementById("app").innerHTML = `
+document.getElementById("app")!.innerHTML = `
 <h1>Welcome to SARS-CoV-2 vaccine to MIDI converter</h1>
 <div>
   Download your MIDI

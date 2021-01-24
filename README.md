@@ -8,6 +8,10 @@ Allows vaccine remixing fun.
 
 If you make music from this, please use the hashtag #remixthevirus or #remixthevaccine when posting. :)
 
+**DISCLAIMER: Listening to the vaccine's genome is not guaranteed to protect you from SARS-CoV-2 🤨 🤷‍♂️**
+
+Side effects may include: dry mouth, nausea and an uncontrollable urge to create music. Consult CDC and/or your doctor if confused.
+
 ## How?
 
 A, C, G nucleotides are mapped to equivalent musical notes, while the Ψ (1-methyl-3'-pseudouridylyl) is currently a closed hi-hat sound. But you can also mute it and make it into a pause (silence) or choose another pitch of your choosing.

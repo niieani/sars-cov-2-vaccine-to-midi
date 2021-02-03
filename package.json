@@ -8,12 +8,10 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "midi-writer-js": "1.7.4"
+    "midi-writer-js": "1.7.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.6.1",
     "prettier": "^2.2.1",
